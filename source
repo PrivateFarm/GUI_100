@@ -1,0 +1,164 @@
+-- Made by x1_Midnight#5247
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Heading = Instance.new("TextLabel")
+local Speed = Instance.new("TextButton")
+local SmallSize = Instance.new("TextButton")
+local _1Shot = Instance.new("TextButton")
+local FastPunch = Instance.new("TextButton")
+local Loop = Instance.new("TextButton")
+local TextButton = Instance.new("TextButton")
+local Credits = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Frame.Position = UDim2.new(0.64269489, 0, 0.530017138, 0)
+Frame.Size = UDim2.new(0, 440, 0, 241)
+Frame.Active = true
+Frame.Draggable = true
+
+Heading.Name = "Heading"
+Heading.Parent = Frame
+Heading.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Heading.Size = UDim2.new(0, 440, 0, 50)
+Heading.Font = Enum.Font.Creepster
+Heading.Text = "Boxing Sim 2 HUB v2"
+Heading.TextColor3 = Color3.fromRGB(181, 181, 181)
+Heading.TextSize = 32.000
+Heading.TextWrapped = true
+
+Speed.Name = "Speed"
+Speed.Parent = Frame
+Speed.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Speed.Position = UDim2.new(0.0424242429, 0, 0.269709557, 0)
+Speed.Size = UDim2.new(0, 116, 0, 50)
+Speed.Font = Enum.Font.Creepster
+Speed.Text = "Speed X"
+Speed.TextColor3 = Color3.fromRGB(181, 181, 181)
+Speed.TextSize = 28.000
+Speed.MouseButton1Down:connect(function()
+	local walkspeedplayer = game:GetService("Players").LocalPlayer
+	local walkspeedmouse = walkspeedplayer:GetMouse()
+
+	local walkspeedenabled = false
+
+	function x_walkspeed(key)
+		if (key == "x") then
+			if walkspeedenabled == false then
+				_G.WS = 5000;
+				local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+				Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+					Humanoid.WalkSpeed = _G.WS;
+				end)
+				Humanoid.WalkSpeed = _G.WS;
+
+				walkspeedenabled = true
+			elseif walkspeedenabled == true then
+				_G.WS = 300;
+				local Humanoid = game:GetService("Players").LocalPlayer.Character.Humanoid;
+				Humanoid:GetPropertyChangedSignal("WalkSpeed"):Connect(function()
+					Humanoid.WalkSpeed = _G.WS;
+				end)
+				Humanoid.WalkSpeed = _G.WS;
+
+				walkspeedenabled = false
+			end
+		end
+	end
+
+	walkspeedmouse.KeyDown:connect(x_walkspeed)
+
+end)
+
+SmallSize.Name = "Small Size"
+SmallSize.Parent = Frame
+SmallSize.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+SmallSize.Position = UDim2.new(0.366161644, 0, 0.269709557, 0)
+SmallSize.Size = UDim2.new(0, 116, 0, 50)
+SmallSize.Font = Enum.Font.Creepster
+SmallSize.Text = "Small"
+SmallSize.TextColor3 = Color3.fromRGB(181, 181, 181)
+SmallSize.TextSize = 30.000
+SmallSize.MouseButton1Click:Connect(function()
+	for i,v in pairs(game.Players.LocalPlayer.Character.Humanoid:GetChildren()) do
+		if v:IsA("NumberValue") then
+			v:Destroy()
+		end
+	end
+end)
+
+_1Shot.Name = "1 Shot"
+_1Shot.Parent = Frame
+_1Shot.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+_1Shot.Position = UDim2.new(0.684090912, 0, 0.269709587, 0)
+_1Shot.Size = UDim2.new(0, 116, 0, 50)
+_1Shot.Font = Enum.Font.Creepster
+_1Shot.Text = "1 Shot kill"
+_1Shot.TextColor3 = Color3.fromRGB(181, 181, 181)
+_1Shot.TextSize = 24.000
+_1Shot.MouseButton1Click:Connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/PrivateFarm/1-Shot/main/source"))()
+end)
+
+FastPunch.Name = "Fast Punch"
+FastPunch.Parent = Frame
+FastPunch.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+FastPunch.Position = UDim2.new(0.0409090891, 0, 0.556016624, 0)
+FastPunch.Size = UDim2.new(0, 116, 0, 50)
+FastPunch.Font = Enum.Font.Creepster
+FastPunch.Text = "Punch Faster"
+FastPunch.TextColor3 = Color3.fromRGB(181, 181, 181)
+FastPunch.TextSize = 24.000
+FastPunch.MouseButton1Click:Connect(function()
+	old = hookfunction(wait,function(t)
+		if not checkcaller() and getcallingscript().Name == "MouseIcon" then
+			return old()
+		end
+		return old(t)
+	end)
+end)
+
+Loop.Name = "Loop"
+Loop.Parent = Frame
+Loop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Loop.Position = UDim2.new(0.3659091, 0, 0.556016624, 0)
+Loop.Size = UDim2.new(0, 116, 0, 50)
+Loop.Font = Enum.Font.Creepster
+Loop.Text = "Loop"
+Loop.TextColor3 = Color3.fromRGB(181, 181, 181)
+Loop.TextSize = 28.000
+Loop.TextWrapped = true
+Loop.MouseButton1Click:Connect(function()
+	loadstring(game:HttpGet("https://kalescriptz.000webhostapp.com/No%20glove"))() 
+end)
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.Position = UDim2.new(0.684090912, 0, 0.556016624, 0)
+TextButton.Size = UDim2.new(0, 116, 0, 50)
+TextButton.Font = Enum.Font.Creepster
+TextButton.Text = "Inf Yeild"
+TextButton.TextColor3 = Color3.fromRGB(181, 181, 181)
+TextButton.TextSize = 24.000
+TextButton.MouseButton1Click:Connect(function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end)
+
+Credits.Name = "Credits"
+Credits.Parent = Frame
+Credits.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Credits.Position = UDim2.new(0.545454562, 0, 0.821576774, 0)
+Credits.Size = UDim2.new(0, 200, 0, 43)
+Credits.Font = Enum.Font.Creepster
+Credits.Text = "Made by x1_Midnight"
+Credits.TextColor3 = Color3.fromRGB(255, 0, 0)
+Credits.TextSize = 22.000
